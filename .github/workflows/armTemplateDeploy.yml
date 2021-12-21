@@ -7,12 +7,11 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
+  workflow_dispatch: # this is the manual running of the workflow
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  armDeploy:
+  armDeploy: # the first job
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -25,8 +24,13 @@ jobs:
         uses: Azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - name: Deploy Resource Group rg-githubactions with AZ CLI
-        uses: Azure/cli@v1
+      
+      - name: Deploy Resource Group rg-githubactions
+        uses: Azure/arm-deploy@v1
         with:
-          inlineScript: |
-            az deployment sub create --location "eastus" --template-file ./arm-templates/resourcegroup.json
+          scope: subscription
+          subsciptionId: 155aacbd-0fdd-4a0f-97b0-7d2e2eb81010
+          region: eastus
+          template: ./arm-templates/resourcegroup.json
+          deploymentName: rg-githubactions
+
