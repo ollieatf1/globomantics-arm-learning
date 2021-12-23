@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageAccountName": {
-            "value": "globostgOL001"
+            "value": "globostgol001"
         },
         "location": {
             "value": "eastus" 
