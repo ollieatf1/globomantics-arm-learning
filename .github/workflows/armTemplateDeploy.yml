@@ -54,5 +54,5 @@ jobs:
           region: eastus
           template: ./arm-templates/virtualmachine.json
           parameters:
-            adminpassword="My$ecureP@ssw0rd!"
+            adminPassword="My$ecureP@ssw0rd!"
           deploymentMode: incremental 
