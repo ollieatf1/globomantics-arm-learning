@@ -101,7 +101,7 @@
             "name": "ubuntuVM1",
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2021-03-01",
-            "location": "parameters('location')",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/networkInterfaces', 'ubuntuVM1-NetworkInterface')]"
             ],
