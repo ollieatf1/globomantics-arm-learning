@@ -11,7 +11,7 @@ on:
 
 env:
   resource_group_name: rg-githubactions
-  location: "eastus"
+  location: eastus
   subscriptionId: 155aacbd-0fdd-4a0f-97b0-7d2e2eb81010
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -35,7 +35,7 @@ jobs:
         with:
           scope: subscription
           subscriptionId: ${{ env.subscriptionId }}
-          region: ${{ env.location }}
+          region: "${{ env.location }}"
           template: ./arm-templates/resourcegroup.json
           deploymentName: ${{ env.resource_group_name }}
 
@@ -45,7 +45,7 @@ jobs:
           scope: resourcegroup 
           resourceGroupName: ${{ env.resource_group_name }}
           subscriptionId: ${{ env.subscriptionId }}
-          region: ${{ env.location }}
+          region: "${{ env.location }}"
           template: ./arm-templates/storageaccount.json
           parameters: ./arm-templates/storageaccount.parameters.json
           deploymentMode: incremental 
@@ -56,9 +56,9 @@ jobs:
           scope: resourcegroup 
           resourceGroupName: ${{ env.resource_group_name }}
           subscriptionId: ${{ env.subscriptionId }}
-          region: ${{ env.location }}
+          region: "${{ env.location }}"
           template: ./arm-templates/virtualmachine.json
           parameters:
             adminPassword=${{ secrets.UBUNTU_ADMIN_PASSWORD }}
-            location=${{ env.location }}
+            location="${{ env.location }}"
           deploymentMode: incremental 
