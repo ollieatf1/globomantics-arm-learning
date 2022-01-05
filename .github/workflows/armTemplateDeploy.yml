@@ -50,15 +50,26 @@ jobs:
           parameters: ./arm-templates/storageaccount.parameters.json
           deploymentMode: incremental 
 
-      - name: Deploy Virtual Machine
+#      - name: Deploy Virtual Machine
+#        uses: Azure/arm-deploy@v1
+#        with:
+#          scope: resourcegroup 
+#          resourceGroupName: ${{ env.resource_group_name }}
+#          subscriptionId: ${{ env.subscriptionId }}
+#          region: "${{ env.location }}"
+#          template: ./arm-templates/virtualmachine.json
+#          parameters:
+#            adminPassword="${{ secrets.UBUNTU_ADMIN_PASSWORD }}"
+#            location=${{ env.location }}
+#          deploymentMode: incremental
+
+      - name: Deploy Virtual Machine 2
         uses: Azure/arm-deploy@v1
         with:
           scope: resourcegroup 
           resourceGroupName: ${{ env.resource_group_name }}
           subscriptionId: ${{ env.subscriptionId }}
-          region: "${{ env.location }}"
-          template: ./arm-templates/virtualmachine.json
-          parameters:
-            adminPassword="${{ secrets.UBUNTU_ADMIN_PASSWORD }}"
-            location=${{ env.location }}
+          region: ${{ env.location }}
+          template: ./arm-templates/storageaccount.json
+          parameters: ./arm-templates/storageaccount.parameters.json
           deploymentMode: incremental 
