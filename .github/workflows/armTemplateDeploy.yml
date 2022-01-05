@@ -70,6 +70,5 @@ jobs:
           resourceGroupName: ${{ env.resource_group_name }}
           subscriptionId: ${{ env.subscriptionId }}
           region: ${{ env.location }}
-          template: ./arm-templates/storageaccount.json
-          parameters: ./arm-templates/storageaccount.parameters.json
+          template: ./arm-templates/virtualmachine2.json
           deploymentMode: incremental 
