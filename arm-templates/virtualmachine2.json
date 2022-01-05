@@ -6,19 +6,6 @@
     "variables": {},
     "resources": [
         {
-            "name": "[toLower('ubuntuVM1storage')]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2021-04-01",
-            "location": "[resourceGroup().location]",
-            "tags": {
-                "displayName": "ubuntuVM1 Storage Account"
-            },
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage"
-        },
-        {
             "name": "ubuntuVM1-PublicIP",
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2020-11-01",
@@ -155,12 +142,6 @@
                             "id": "[resourceId('Microsoft.Network/networkInterfaces', 'ubuntuVM1-NetworkInterface')]"
                         }
                     ]
-                },
-                "diagnosticsProfile": {
-                    "bootDiagnostics": {
-                        "enabled": true,
-                        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', toLower('ubuntuVM1storage'))).primaryEndpoints.blob]"
-                    }
                 }
             }
         }
