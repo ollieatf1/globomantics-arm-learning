@@ -72,6 +72,6 @@ jobs:
           region: ${{ env.location }}
           template: ./arm-templates/virtualmachine2.json
           parameters:
-            location='eastus'
+            location="East US"
             adminPassword=${{ secrets.UBUNTU_ADMIN_PASSWORD }}
           deploymentMode: incremental 
